@@ -42,10 +42,13 @@ module.exports.plugin = {
                         var valid_user = await User.findOne({ "email": request.payload.email, "password": request.payload.password }).exec();
                         if (valid_user) {
                             console.log("valid user: ", valid_user);
-                            // if (!valid_user.user_profile[0]) {
-                            //     valid_user.user_profile.push({});
-                            // }
-                            await request.cookieAuth.set({ "user": valid_user.email, "member_id": valid_user.member_id, "name": valid_user.name });
+                            if (!valid_user.user_profile[0]) {
+                                 valid_user.user_profile.push({});
+                            }
+                            if (!valid_user.wallet[0]) {
+                                valid_user.wallet.push({});
+                           }
+                            request.cookieAuth.set({ "user": valid_user.email, "member_id": valid_user.member_id, "name": valid_user.name });
                             console.log("Returning View Profile\n");
                             return h.response("successful login");
                         }

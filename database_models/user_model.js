@@ -14,7 +14,7 @@ var walletSchema = new mongoose.Schema({
 
 var userSchema = new mongoose.Schema({
     name: {type:String},
-    username: {type:String},
+    username: {type:String, default: ""},
     email: {type:String},
     password: {type:String},
     member_id: {type:String, default: shortid.generate},
@@ -26,7 +26,7 @@ var userSchema = new mongoose.Schema({
 
     open_bets: [{"challenger_id":String, "challenger_name":String, "mediator_id":String, "amount_to_win":Number, "amount_to_pay":Number}],
     closed_bets: [{"challenger_id":String, "challenger_name":String, "profile_pic":String, "win":Boolean, "amount_paid":Number, bet_data: {type: Date, default: Date.now}}],
-    requests: [{"challenger_id":String, "challenger_name":String, "amount_to_win":Number, "amount_to_pay":Number}],
+    requests: [{"challenger_id":String, "challenger_name":String, "mediator_id":String, "amount_to_win":Number, "amount_to_pay":Number}],
 
     user_profile:[userProfileSchema],
     wallet: [walletSchema]//sub document

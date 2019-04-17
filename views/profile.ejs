@@ -11,7 +11,7 @@
         <div class="col-md-4">
             <div class="container-fluid profile-Container">
                 <div class="row my-2" id="profileBanner">
-                    <img src="http://localhost:3000/user_profile_images/<%=user.user_profile[0].profile_pic%>"
+                    <img src="http://localhost:3000/user_profile_images/<%=user.user_profile[0].profile_pic%>" width="150" height="150"
                         class="mx-auto d-block profilePic">
                 </div>
                 <div class="row my-4">
@@ -38,7 +38,8 @@
                 </div>
                 <!--POSTS-->
                 <ul class="list-group">
-                    <%user.closed_bets.reverse().forEach(function(bet){ %>
+
+                    <%user.closed_bets.forEach(function(bet){ %>
                         <li class="feedItem">
                             <article class="container-fluid border rounded border-dark shadow-lg md-0">
                                 <div class="row">
@@ -51,8 +52,8 @@
                                             <strong class="feedName"><%=bet.challenger_name%></strong>
                                             <img src="http://localhost:3000/user_profile_images/<%=bet.profile_pic%>" width="40" height="40"
                                                 class="rounded-circle img-fluid" />
-                                        <%}%>
-                                        <%else{ %>
+                                        
+                                        <%} else{ %>
                                             <img src="http://localhost:3000/user_profile_images/<%=user.user_profile[0].profile_pic%>" width="40" height="40"
                                                 class="rounded-circle img-fluid" />
                                             <strong class="feedName"><%=user.name%></strong>
