@@ -11,7 +11,7 @@ module.exports.plugin = {
                     auth: "session",
                     handler: async function(request, h){
                         var users = await User.find({"email": {$ne: request.auth.credentials.user}}).exec();
-                        return h.view("friends", {user_friends: users});
+                        return h.view("settings", {user_friends: users});
                     }
                 }
             }
