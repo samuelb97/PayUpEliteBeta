@@ -1,14 +1,11 @@
 <%include partials/header%>
-
-<%- include('partials/navbar', {active: "profile"}); %>
+<%- include('partials/navbar', {active: "profile"}); %> 
 
 <link rel="stylesheet" href="/css/profile.css">
 
 <html>
 <div class="container-fluid">
-
     <div class="row">
-
         <div class="col-md-4">
             <div class="container-fluid profile-Container">
                 <div class="row my-2" id="profileBanner">
@@ -34,7 +31,7 @@
                         </li>
                         <li>
                             <a data-toggle="tab" href="#">Past Challenges</a>
-                        </li>
+                        </li> 
                     </ul>
                 </div>
                 <!--POSTS-->
@@ -52,8 +49,7 @@
                                             <strong class="feedName"><%=bet.challenger_name%></strong>
                                             <img src="http://localhost:3000/user_profile_images/<%=bet.profile_pic%>" width="40" height="40"
                                                 class="rounded-circle img-fluid" />
-                                        <%}%>
-                                        <%else{ %>
+                                        <%} else{ %>
                                             <img src="http://localhost:3000/user_profile_images/<%=user.user_profile[0].profile_pic%>" width="40" height="40"
                                                 class="rounded-circle img-fluid" />
                                             <strong class="feedName"><%=user.name%></strong>
@@ -79,8 +75,7 @@
                             </article>
                         </li>
                     <%})%>
-                    <!--POSTS END-->
-
+                    <!-- POSTS END -->
                 </ul>
             </div>
         </div>

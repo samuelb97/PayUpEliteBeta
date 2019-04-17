@@ -20,6 +20,7 @@ module.exports.plugin = {
                             user.wallet.push({});
                             await user.wallet[0].save();
                         }
+                        console.log(user);
                         return h.view("profile", {user: user});
                     }
                 }
