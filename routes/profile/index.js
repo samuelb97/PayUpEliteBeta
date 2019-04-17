@@ -10,8 +10,9 @@ module.exports.plugin = {
                 config: {
                     auth: "session",
                     handler: async function(request, h){
-                        var users = await User.find({"email": {$ne: request.auth.credentials.user}}).exec();
-                        return h.view("friends", {user_friends: users});
+                        var user = await User.findOne({"email": request.auth.credentials.user}).exec();
+                        console.log("Profile User: ", user);
+                        return h.view("profile", {user: user});
                     }
                 }
             }
