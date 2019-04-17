@@ -1,0 +1,77 @@
+<%include partials/header%>
+<%- include('partials/navbar', {active: "profile"}); %>
+
+<link rel="stylesheet" href="/css/profile.css">
+
+<html>
+<div class="container-fluid">
+
+    <div class="row">
+
+        <div class="col-md-4">
+            <div class="container-fluid profile-Container">
+                <div class="row my-2" id="profileBanner">
+                    <img src="assets/DefaultPic.png" class="mx-auto d-block profilePic">
+                </div>
+                <div class="row my-4">
+                    <div class="col">
+                        <div class="row-4"> <strong> Samuel Boley </strong></div>
+                        <div class="row-4">Miami, Fl</div>
+                        <div class="row-2">@SourCreamDollop</div>
+                        <div class="row-2"><span>Record: </span>20-0</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="container-fluid mt-2 orange3">
+                <div class="container">
+                    <ul class="nav nav-pills center-pills">
+                        <li class="active">
+                            <a data-toggle="tab" href="#">Open Challenges</a>
+                        </li>
+                        <li>
+                            <a data-toggle="tab" href="#">Past Challenges</a>
+                        </li>
+                    </ul>
+                </div>
+                <!--POSTS-->
+                <ul class="list-group">
+                    <li class="feedItem">
+                        <article class="container-fluid border rounded border-dark shadow-lg md-0">
+                            <div class="row">
+                                <div class="col">
+                                    <img src="../assets/DefaultPic.png" width="40" height="40"
+                                        class="rounded-circle img-fluid" />
+                                    <strong class="feedName">Samuel Boley</strong>
+                                    <span class="wonVS"> won vs. </span>
+                                    <strong class="feedName">Justin Moon</strong>
+                                    <img src="../assets/DefaultPic.png" width="40" height="40"
+                                        class="rounded-circle img-fluid" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col text-right" id="timestamp">
+                                    <span class="text-right timestamp">2 hours ago</span></div>
+                            </div>
+                            <div class="row" id="feedItemMedia">
+                                <div class="col-sm-4" id="feedItemMediaColumn">
+                                    <img src="../assets/MacKidBeatdown.gif" class="img-fluid" id="BanterImg"/>
+                                </div>
+                                <div class="col-sm-8">
+                                    <p id="feedItemMessage">Never bet on yourself, you gosh darn dingus!</p>
+                                </div>
+                            </div>
+                        </article>
+                    </li>
+                    <!--POSTS END-->
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+</html>

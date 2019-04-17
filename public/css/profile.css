@@ -1,0 +1,52 @@
+.profile-Container{
+    background: #FFE0B2;
+    text-align: center;
+}
+
+.profilePic{
+    border-radius: 60;
+}
+
+.orange3{
+    background: #FFB74D;
+}
+
+.feedItem{
+    list-style-type: none; padding: 10px; padding-right: 20px;
+}
+
+.feedName{
+    font-size: 14px;
+}
+
+.wonVS{
+    font-size: 12px;
+}
+
+#timestamp{
+    padding: 0;
+    margin: 0;
+    margin-right: 15px;
+    margin-top: -8px;
+}
+
+.timestamp{
+    opacity: 0.47;
+    font-size: 10px;
+}
+
+#feedItemMedia{
+    padding-bottom: 10px;
+}
+
+#feedItemMediaColumn{
+    width: 17px;
+}
+
+#BanterImg{
+    border-radius: 10;
+}
+
+#feedItemMessage{
+    font-size: 12px;
+}

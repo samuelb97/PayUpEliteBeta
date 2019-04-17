@@ -1,0 +1,224 @@
+<%include partials/header%>
+
+<link rel="stylesheet" href="/css/landing.css">
+
+<html>
+
+<body>
+    <div class="row">
+        <div class="col-6">
+            <div class="jumbotron">
+                <h1 class="display-4">PayUp</h1>
+                <p class="lead">Your all access pass to challenge your friends</p>
+                <hr class="my-4">
+                <p>Get started now. Your glory awaits.
+                </p>
+                <p class="lead">
+                    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+                </p>
+            </div>
+        </div>
+        <div class="col">
+            <div id="logreg-forms">
+                <form class="form-signin">
+                    <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Sign in</h1>
+                    <div class="social-login">
+                        <fb:login-button id="fbLogin" class="btn facebook-btn social-btn" scope="public_profile,email"
+                            onlogin="checkLoginState();">
+                            <span><i class="fab fa-facebook-f"></i> Sign up with Facebook</span>
+                    </div>
+
+                    </fb:login-button>
+                    <p style="text-align:center"> OR </p>
+                    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required=""
+                        autofocus="">
+                    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+
+                    <button class="btn btn-success btn-block" type="submit"><i class="fas fa-sign-in-alt"></i> Sign
+                        in</button>
+                    <a href="#" id="forgot_pswd">Forgot password?</a>
+                    <hr>
+                    <!-- <p>Don't have an account!</p>  -->
+                    <button class="btn btn-primary btn-block" type="button" id="btn-signup"><i
+                            class="fas fa-user-plus"></i>
+                        Sign up New Account</button>
+                </form>
+
+                <form action="/reset/password/" class="form-reset">
+                    <input type="email" id="resetEmail" class="form-control" placeholder="Email address" required=""
+                        autofocus="">
+                    <button class="btn btn-primary btn-block" type="submit">Reset Password</button>
+                    <a href="#" id="cancel_reset"><i class="fas fa-angle-left"></i> Back</a>
+                </form>
+
+                <form action="/signup/" class="form-signup">
+                    <div class="social-login">
+                        <button class="btn facebook-btn social-btn" type="button"><span><i
+                                    class="fab fa-facebook-f"></i> Sign
+                                up with Facebook</span> </button>
+                    </div>
+
+                    <p style="text-align:center">OR</p>
+
+                    <input type="text" id="user-name" class="form-control" placeholder="Full name" required=""
+                        autofocus="">
+                    <input type="email" id="user-email" class="form-control" placeholder="Email address" required
+                        autofocus="">
+                    <input type="password" id="user-pass" class="form-control" placeholder="Password" required
+                        autofocus="">
+                    <input type="password" id="user-repeatpass" class="form-control" placeholder="Repeat Password"
+                        required autofocus="">
+
+                    <button class="btn btn-primary btn-block" type="submit"><i class="fas fa-user-plus"></i> Sign
+                        Up</button>
+                    <a href="#" id="cancel_signup"><i class="fas fa-angle-left"></i> Back</a>
+                </form>
+                <br>
+
+            </div>
+        </div>
+    </div>
+    <p style="text-align:center">
+        <a href="http://bit.ly/2RjWFMfunction toggleResetPswd(e){
+            e.preventDefault();
+            $('#logreg-forms .form-signin').toggle() // display:block or none
+            $('#logreg-forms .form-reset').toggle() // display:block or none
+        }
+        
+        function toggleSignUp(e){
+            e.preventDefault();
+            $('#logreg-forms .form-signin').toggle(); // display:block or none
+            $('#logreg-forms .form-signup').toggle(); // display:block or none
+        }
+        
+        $(()=>{
+            // Login Register Form
+            $('#logreg-forms #forgot_pswd').click(toggleResetPswd);
+            $('#logreg-forms #cancel_reset').click(toggleResetPswd);
+            $('#logreg-forms #btn-signup').click(toggleSignUp);
+            $('#logreg-forms #cancel_signup').click(toggleSignUp);
+        })g" target="_blank" style="color:black"></a>
+    </p>
+</body>
+<script>
+    function toggleResetPswd(e) {
+        e.preventDefault();
+        $('#logreg-forms .form-signin').toggle() // display:block or none
+        $('#logreg-forms .form-reset').toggle() // display:block or none
+    }
+
+    function toggleSignUp(e) {
+        e.preventDefault();
+        $('#logreg-forms .form-signin').toggle(); // display:block or none
+        $('#logreg-forms .form-signup').toggle(); // display:block or none
+    }
+
+    $(() => {
+        // Login Register Form
+        $('#logreg-forms #forgot_pswd').click(toggleResetPswd);
+        $('#logreg-forms #cancel_reset').click(toggleResetPswd);
+        $('#logreg-forms #btn-signup').click(toggleSignUp);
+        $('#logreg-forms #cancel_signup').click(toggleSignUp);
+    })
+</script>
+
+<div id="status"></div>
+
+<script>
+    window.fbAsyncInit = function () {
+        FB.init({
+            appId: '281826302747123',
+            cookie: true,
+            xfbml: true,
+            version: 'v3.2'
+        });
+
+        FB.AppEvents.logPageView();
+
+        FB.getLoginStatus(function (response) {
+            statusChangeCallback(response);
+            console.log(response);
+        });
+
+    };
+
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) { return; }
+        js = d.createElement(s); js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+    function checkLoginState() {
+        FB.getLoginStatus(function (response) {
+            statusChangeCallback(response);
+            $.ajax({
+                method: "POST",
+                url: "/fbLogin",
+                data: response,
+                success: function () {
+                    location.href = "http://localhost:3000/";
+                    console.log("success");
+                }
+            })
+        });
+    }
+
+    function statusChangeCallback(response) {
+        console.log('statusChangeCallback');
+        console.log(response);
+        // The response object is returned with a status field that lets the
+        // app know the current login status of the person.
+        // Full docs on the response object can be found in the documentation
+        // for FB.getLoginStatus().
+        if (response.status === 'connected') {
+            // Logged into your app and Facebook.
+            console.log('Welcome!  Fetching your information.... ');
+            FB.api('/me', function (response) {
+                console.log('Successful login for: ' + response.name);
+                document.getElementById('status').innerHTML =
+                    'Thanks for logging in, ' + response.name + '!';
+            });
+        } else {
+            // The person is not logged into your app or we are unable to tell.
+            document.getElementById('status').innerHTML = 'Please log ' +
+                'into this app.';
+        }
+    }
+
+</script>
+
+<script>
+    $("#register_user").on("click", function () {
+        $.ajax({
+            method: "POST",
+            url: "/sign_up",
+            data: $("#sign_up_form").serialize(),
+            success: function () {
+                location.href = "http://localhost:3000/";
+                console.log("success");
+            }
+        })
+    })
+
+    $("#sign_in_user").on("click", function () {
+        console.log('Log In Clicked');
+        $.ajax({
+            method: "POST",
+            url: "/login",
+            data: $("#sign_in_form").serialize(),
+            success: function () {
+                console.log("success");
+                location.href = "http://localhost:3000/home";
+            },
+            error: function (err) {
+                $("#usr_email, #usr_pwd").val("");
+            }
+        })
+    })
+
+
+</script>
+
+</html>
