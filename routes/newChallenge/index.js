@@ -6,12 +6,12 @@ module.exports.plugin = {
         server.route([
             {
                 method: "GET",
-                path: "/banter",
+                path: "/newChallenge",
                 config: {
                     auth: "session",
                     handler: async function(request, h){
-                        var users = await User.find({"email": {$ne: request.auth.credentials.user}}).exec();
-                        return h.view("banter", {user_friends: users});
+                        console.log("New Challenge\n");
+                        return h.view("newChallenge");
                     }
                 }
             }

@@ -40,6 +40,7 @@ let start = async function () {
         require("./routes/groups"),
         require("./routes/settings"),
         require("./routes/landing"),
+        require("./routes/newChallenge"),
     ]);
 
     server.route([

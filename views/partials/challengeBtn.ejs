@@ -1,7 +1,16 @@
 <%include header%>
 
 <div class="ChallengeBtn">
-    <button type="button" class="btn btn-circle" style="background: url(/images/contract_icon.png); 
+    <button type="button" class="btn btn-circle" 
+        data-toggle="modal" data-target="#newChallengeModal"
+    
+        style="background: url(/images/contract_icon.png); 
+            border-radius: 40px;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 80px;
+            height: 80px;
             background-color: #FF9800; 
             box-shadow: 4px 4px #444444;
             background-size: 220%;
@@ -9,3 +18,36 @@
             background-position-x: 45%;">
     </button>
 </div>
+
+<div id="newChallengeModal" class="modal fade" role="dialog" tabindex="-1">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <p>New Challenge</p>
+                <div class="container"><input type="search"></div><button type="button" class="close"
+                    data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body"><span></span><input type="search"><input type="number"><input type="number"></div>
+            <div class="modal-footer"><textarea></textarea><button class="btn btn-light" type="button"
+                    data-dismiss="modal">Close</button><button class="btn btn-primary" type="button">Send</button></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(".ChallengeBtn").on("click", function () {
+        $("")
+        // console.log('Challenge Btn Clicked');
+        // $.ajax({
+        //     method: "GET",
+        //     url: "/newChallenge",
+        //     success: function () {
+        //         console.log("success");
+        //         location.href = "http://localhost:3000/newChallenge"
+        //     },
+        //     error: function (err) {
+        //         $("#usr_email, #usr_pwd").val("");
+        //     }
+        // })
+    })
+</script>
